@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.vscode/**'
+      - '.idea/**'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  algofi-contracts-validate:
+    name: Run algofi-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/algofi-contracts-ci.yaml
+
+  algofi-contracts-release:
+    name: Run algofi-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/algofi-contracts-cd.yaml
+    needs: algofi-contracts-validate
+
+  algofi-frontend-validate:
+    name: Run algofi-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/algofi-frontend-ci.yaml
+
+  algofi-frontend-release:
+    name: Run algofi-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/algofi-frontend-cd.yaml
+    needs: algofi-frontend-validate
