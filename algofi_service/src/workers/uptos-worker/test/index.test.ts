@@ -7,7 +7,7 @@ const aptos = new Aptos(new AptosConfig({ network: NETWORK as Network }));
 const alice = Account.generate();
 // const bob = Account.generate();
 
-describe('test leofi pump smart contract events', () => {
+describe('test AlgoFi pump smart contract events', () => {
   beforeAll(async () => {
     await aptos.faucet.fundAccount({
       accountAddress: alice.accountAddress,
@@ -39,7 +39,7 @@ describe('test leofi pump smart contract events', () => {
       data: {
         function: `${MODULE_ADDR}::pump::create`,
         typeArguments: [
-          `${alice.accountAddress.toStringWithoutPrefix()}::leofi::PUMP`
+          `${alice.accountAddress.toStringWithoutPrefix()}::AlgoFi::PUMP`
         ],
         functionArguments: [
           'name',

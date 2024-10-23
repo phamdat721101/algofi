@@ -1,13 +1,13 @@
-# LeoFi Bot: Your Smart Aptos DeFi Assistant
+# AlgoFi Bot: Your Smart Aptos DeFi Assistant
 
-![LeoFi Logo](https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LeoFi_4x4-qV8iHK5K8IxONkFo4Fe4Hwu9AwMHf0.jpg)
+![AlgoFi Logo](https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AlgoFi_4x4-qV8iHK5K8IxONkFo4Fe4Hwu9AwMHf0.jpg)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.5%2B-blue)](https://www.typescriptlang.org/)
 [![Aptos](https://img.shields.io/badge/Aptos-Ready-blue)](https://aptoslabs.com/)
 
-LeoFi Bot is an intelligent DeFi assistant designed specifically for the Aptos blockchain ecosystem. With advanced AI capabilities and real-time market data integration, LeoFi Bot provides personalized investment advice, portfolio management, and seamless interactions with Aptos-based DeFi protocols.
+AlgoFi Bot is an intelligent DeFi assistant designed specifically for the Aptos blockchain ecosystem. With advanced AI capabilities and real-time market data integration, AlgoFi Bot provides personalized investment advice, portfolio management, and seamless interactions with Aptos-based DeFi protocols.
 
 ## Features
 
@@ -31,16 +31,16 @@ Before you begin, ensure you have met the following requirements:
 
 ## Installation
 
-To install LeoFi Bot, follow these steps:
+To install AlgoFi Bot, follow these steps:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/leofi/leofi-aptos-bot.git
+   git clone https://github.com/AlgoFi/AlgoFi-aptos-bot.git
    ```
 
 2. Navigate to the project directory:
    ```
-   cd leofi-aptos-bot
+   cd AlgoFi-aptos-bot
    ```
 
 3. Install the dependencies:
@@ -61,13 +61,13 @@ To install LeoFi Bot, follow these steps:
 
 ## Usage
 
-To start using LeoFi Bot, run the following command:
+To start using AlgoFi Bot, run the following command:
 
 ```
 npm start
 ```
 
-This will launch the bot's interface. Connect your Aptos wallet when prompted, and you'll be ready to start exploring the world of Aptos DeFi with LeoFi Bot!
+This will launch the bot's interface. Connect your Aptos wallet when prompted, and you'll be ready to start exploring the world of Aptos DeFi with AlgoFi Bot!
 
 Here are some example commands you can try:
 
@@ -79,7 +79,7 @@ Here are some example commands you can try:
 
 ## Contributing
 
-We welcome contributions to LeoFi Bot! If you have suggestions for improvements or encounter any issues, please feel free to open an issue or submit a pull request.
+We welcome contributions to AlgoFi Bot! If you have suggestions for improvements or encounter any issues, please feel free to open an issue or submit a pull request.
 
 1. Fork the project
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -95,4 +95,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Happy Aptos DeFi-ing with LeoFi Bot! 🚀🦁💰
+Happy Aptos DeFi-ing with AlgoFi Bot! 🚀🦁💰

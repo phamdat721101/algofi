@@ -14,7 +14,7 @@ export const removeDuplicateUser = (users: { addr: string }[]) => [
       {
         addr,
         name: addr.slice(0, 10),
-        img: `https://leofi-pump.myfilebase.com/ipfs/${imgs[Math.floor(Math.random() * imgs.length)] ?? ''}`
+        img: `https://AlgoFi-pump.myfilebase.com/ipfs/${imgs[Math.floor(Math.random() * imgs.length)] ?? ''}`
       }
     ])
   ).values()

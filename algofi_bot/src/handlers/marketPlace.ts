@@ -2,7 +2,7 @@ import { BotContext } from '../types';
 
 export async function handleMarketplace(ctx: BotContext) {
   const message = `
-Welcome to the LeoFi Yield Assistant! 🌾
+Welcome to the AlgoFi Yield Assistant! 🌾
 
 Here you can access our Yield Optimization Marketplace, where you can:
 
@@ -12,7 +12,7 @@ Here you can access our Yield Optimization Marketplace, where you can:
 • Create and manage your custom yield farming strategies
 
 Visit our web app to explore the full functionality:
-🌐 LeoFi Yield Assistant (https://www.leofi.xyz/)
+🌐 AlgoFi Yield Assistant (https://www.AlgoFi.xyz/)
 
 What would you like to do?`;
 

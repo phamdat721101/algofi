@@ -7,57 +7,127 @@ export async function handlePortfolio(ctx: BotContext) {
   if (!ctx.session) {
     ctx.session = { messages: [], portfolio: [], awaitingPortfolioInput: false } as SessionData;
   }
-  // Sample data for createProfile
-  const sampleProfileData = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    age: 30,
-    investmentGoals: ["Retirement", "Growth"]
-  };
-
-  // Call createProfile service with sample data
-  const createdProfile = await createProfile(sampleProfileData);
-  console.log('Created profile:', createdProfile);
-
-  // Call getProfile service and print to console
-  const profile = await getProfile();
-  console.log('User profile:', profile);
-
-  const portfolioSummary = 'Here\'s a summary of your current portfolio:';
-  ctx.session.messages.push({ type: 'bot', content: portfolioSummary });
-  await ctx.reply(portfolioSummary);
-
-  // const chartBuffer = await generatePortfolioChart();
-  // ctx.session.messages.push({ type: 'chart', content: 'Portfolio Breakdown' });
-  // await ctx.replyWithPhoto({ source: chartBuffer });
-  
-  const tableData = [
-    { profile_name: 'DeFi Master', profit: 45, sector: 'DeFi', link: 'https://www.leofi.xyz/' },
-    { profile_name: 'SoFi Sage', profit: 30, sector: 'SoFi', link: 'https://www.leofi.xyz/' },
-    { profile_name: 'Meme Mogul', profit: 80, sector: 'Meme Coin', link: 'https://www.leofi.xyz/' },
-    { profile_name: 'NFT Ninja', profit: 55, sector: 'NFT', link: 'https://www.leofi.xyz/' },
-    { profile_name: 'Chain Champ', profit: 40, sector: 'Layer 1', link: 'https://www.leofi.xyz/' },
+  // Market data
+  const markets = [
+    {
+      title: "🌟 Bitcoin Above $100k by Dec 2024",
+      liquidity: "456.8K ALGO",
+      timeLeft: "2d 14h",
+      yesOdds: "2.5x",
+      noOdds: "1.8x",
+      volume: "456.8K",
+      participants: 1243
+    },
+    {
+      title: "🚀 ETH 2.0 Merge Success",
+      liquidity: "892.1K ALGO",
+      timeLeft: "5d 8h",
+      yesOdds: "1.9x",
+      noOdds: "2.2x",
+      volume: "892.1K",
+      participants: 2156
+    },
+    {
+      title: "🗳️ US Election Winner 2024",
+      liquidity: "1.2M ALGO",
+      timeLeft: "98d 6h",
+      yesOdds: "2.1x",
+      noOdds: "1.95x",
+      volume: "1.2M",
+      participants: 5689
+    }
   ];
-  
-  const tableHeader = '┌─────────────┬────────┬───────────┐\n' +
-                      '│ <b>Profile</b>    │ <b>Profit</b> │ <b>Sector</b>    │\n' +
-                      '├─────────────┼────────┼───────────┤';
-  
-  const tableRows = tableData.map((row, index) => 
-    `│ ${row.profile_name.padEnd(11)} │ ${(row.profit + '%').padStart(6)} │ ${row.sector.padEnd(9)} │`
-  ).join('\n');
-  
-  const tableFooter = '\n└─────────────┴────────┴───────────┘';
-  
-  const formattedTable = `<pre>${tableHeader}\n${tableRows}${tableFooter}</pre>`;
-  
-  const links = tableData.map((row, index) => 
-    `${index + 1}. <a href="${row.link}">${row.profile_name}</a>`
-  ).join('\n');
-  
-  const message = `${formattedTable}\n\nLinks:\n${links}`;
-  
-  ctx.replyWithHTML(message);
+
+  // Header message
+  const headerMessage = `
+  🎯 <b>Popular Prediction Markets</b>
+  Choose a market to place your bet! 🎲
+  `;
+
+    // Create formatted market listings
+    const marketListings = markets.map((market, index) => `
+  ${index + 1}. <b>${market.title}</b>
+  📊 <b>Market Stats:</b>
+    • Liquidity: ${market.liquidity}
+    • Time Left: ${market.timeLeft}
+    • Participants: ${market.participants}
+
+  💫 <b>Current Odds:</b>
+    ✅ YES: ${market.yesOdds}
+    ❌ NO: ${market.noOdds}
+
+  💎 Total Volume: ${market.volume}
+  ─────────────────`).join('\n');
+
+    // Top traders section
+    const topTraders = `
+  🏆 <b>Top Traders This Week</b>
+
+  1. 👑 DeFi Master
+    Profit: +45.8% | Volume: 125.3K ALGO
+    
+  2. 🥈 Crypto Sarah
+    Profit: +32.4% | Volume: 98.7K ALGO
+    
+  3. 🥉 AlgoTrader
+    Profit: +28.9% | Volume: 87.2K ALGO
+  `;
+
+    // Instructions footer
+    const footer = `
+  📱 <b>How to Participate:</b>
+  1. Select market number
+  2. Choose YES/NO
+  3. Enter ALGO amount
+
+  ⚡️ <b>Quick Links:</b>
+  • /markets - View all markets
+  • /portfolio - Your positions
+  • /help - Trading guide
+  `;
+
+    // Combine all sections
+    const fullMessage = `${headerMessage}${marketListings}\n${topTraders}\n${footer}`;
+
+    // Send the formatted message
+    await ctx.replyWithHTML(fullMessage, {
+      reply_markup: {
+        inline_keyboard: [
+          [
+            { text: "📊 View All Markets", callback_data: "view_markets" },
+            { text: "👤 My Portfolio", callback_data: "view_portfolio" }
+          ],
+          [
+            { text: "❓ Help Guide", callback_data: "help" }
+          ]
+        ]
+      }
+  });
+
+  // Function to handle market selection
+  const handleMarketSelection = async (marketIndex : any) => {
+    const market = markets[marketIndex];
+    const betOptions = `
+  🎯 <b>${market.title}</b>
+
+  Current Odds:
+  ✅ YES: ${market.yesOdds}
+  ❌ NO: ${market.noOdds}
+
+  Enter your prediction:
+  `;
+
+  await ctx.replyWithHTML(betOptions, {
+    reply_markup: {
+      inline_keyboard: [
+          [
+            { text: "Bet YES", callback_data: `bet_yes_${marketIndex}` },
+            { text: "Bet NO", callback_data: `bet_no_${marketIndex}` }
+          ]
+        ]
+      }
+    });
+  };
 }
 
 export function setupPortfolioHandlers(bot: any) {

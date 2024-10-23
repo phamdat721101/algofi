@@ -62,7 +62,7 @@ export async function handleYieldAssistant(ctx: BotContext) {
           "          |          ",
           "          v          ",
           "    +-----------+    ",
-          "    |   LeoFi   |    ",
+          "    |   AlgoFi   |    ",
           "    | Platform  |    ",
           "    +-----------+    ",
           "          |          ",
@@ -87,7 +87,7 @@ export async function handleYieldAssistant(ctx: BotContext) {
       };
       
       const createTelegramMessage = (asciiGraph: any, selectedOpportunities: any, initialInvestment: any) => {
-        let message = "<b>🦁 LeoFi DeFi Opportunities 🦁</b>\n\n";
+        let message = "<b>🦁 AlgoFi DeFi Opportunities 🦁</b>\n\n";
         message += `<b>Initial Investment:</b> $${initialInvestment}\n\n`;
         message += "<b>Here are your selected DeFi routes:</b>\n\n";
         message += `<pre>${asciiGraph}</pre>\n\n`;
@@ -100,7 +100,7 @@ export async function handleYieldAssistant(ctx: BotContext) {
           message += `   🏦 Platform: ${opp.platform}\n`;
           message += `   💸 Estimated Annual Yield: $${(Number(investment) * opp.apy / 100).toFixed(2)}\n\n`;
         });
-        message += "Unlock your financial potential with LeoFi—explore decentralized asset management and start growing your investments today! Start your virtual investment <a href='https://leofi.xyz'>here</a> 🦁";
+        message += "Unlock your financial potential with AlgoFi—explore decentralized asset management and start growing your investments today! Start your virtual investment <a href='https://AlgoFi.xyz'>here</a> 🦁";
         return message;
       };
       

@@ -12,7 +12,7 @@ services:
       MODE: development
       PGHOST: db
       PGPORT: 5432
-      PGDATABASE: leofi
+      PGDATABASE: AlgoFi
       PGUSER: service
       PGPASSWORD: password
       NETWORK: testnet
@@ -26,12 +26,12 @@ services:
     container_name: db
     image: postgres:16.2-bookworm
     environment:
-      POSTGRES_DB: leofi
+      POSTGRES_DB: AlgoFi
       POSTGRES_USER: service
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     healthcheck:
-      test: pg_isready -U service -d leofi
+      test: pg_isready -U service -d AlgoFi
       interval: 1s
       timeout: 5s
       retries: 20

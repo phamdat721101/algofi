@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { createCapital } from '../services/leofiServices';
+import { createCapital } from '../services/AlgoFiServices';
 
-export class LeofiController {
+export class AlgoFiController {
   async createCapital(req: Request, res: Response) {
     try {
       const { data } = req.body;

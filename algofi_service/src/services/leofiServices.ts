@@ -20,7 +20,7 @@ export async function createCapital(data: any): Promise<string> {
     const client = new AptosClient('https://api.testnet.aptoslabs.com/v1');
     const contractAddress = "0xf1a29176e0690487a0d8e10aec8d681935fe678ddc96165800d5f6f2b25b0c6f";
     const privateKey = "0xf29d8be243551671c7949f59538980de229cc62061a95ce1505a790f955068e5"
-    const moduleName = "leofi_module"    
+    const moduleName = "AlgoFi_module"    
     const functionName = "create"
     const account = new AptosAccount(new HexString(privateKey).toUint8Array());
     const addr = account.address()

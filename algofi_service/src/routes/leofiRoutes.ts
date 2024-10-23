@@ -1,11 +1,11 @@
 import { Router, Request, Response } from 'express';
-import { LeofiController } from '../controllers/leofiController';
+import { AlgoFiController } from '../controllers/AlgoFiController';
 
 
 const router = Router();
-const leofiController = new LeofiController();
+const AlgoFiController = new AlgoFiController();
 
 
-router.post('/', leofiController.createCapital);
+router.post('/', AlgoFiController.createCapital);
 
 export default router;
